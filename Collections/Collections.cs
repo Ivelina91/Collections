@@ -113,5 +113,15 @@ namespace Collections
             result.Append("]");
             return result.ToString();
         }
+
+        public object RemoveAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetBy(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

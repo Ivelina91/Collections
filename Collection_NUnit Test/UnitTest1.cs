@@ -188,7 +188,72 @@ namespace Collection_Test
 
             Assert.That(collection.Count, Is.EqualTo(expectedCount));
         }
+      
+        [Test]
+        public void Test_RemoveAll()
+        {
+            var collection = new Collection<int>(1, 2, 3);
 
+            Assert.That(() => collection.RemoveAll(), Throws.TypeOf<NotImplementedException>());
+           
+        }
+
+        [Test]
+        public void Test_RemoveAtEnd()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+            int index = 2;
+            collection.RemoveAt(index);
+            int expectedCount = 2;
+            Assert.That(collection.Count, Is.EqualTo(expectedCount));
+            Assert.AreEqual(collection.ToString(), "[1, 2]");
+
+        }
+        [Test]
+        public void Test_RemoveAtStart()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+            int index = 0;
+            collection.RemoveAt(index);
+            int expectedCount = 2;
+            Assert.That(collection.Count, Is.EqualTo(expectedCount));
+            Assert.AreEqual(collection.ToString(), "[2, 3]");
+
+        }
+        [Test]
+        public void Test_RemoveAtMiddle()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+            int index = 1;
+            collection.RemoveAt(index);
+            int expectedCount = 2;
+            Assert.That(collection.Count, Is.EqualTo(expectedCount));
+            Assert.AreEqual(collection.ToString(), "[1, 3]");
+
+        }
+        [Test]
+        public void Test_RemoveAtInvalidIndex()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+          
+            int expectedCount = 3;
+            Assert.That(collection.Count, Is.EqualTo(expectedCount));
+            Assert.That(() => collection.RemoveAt(4), Throws.TypeOf<ArgumentOutOfRangeException>());
+
+        }
+        [Test]
+        public void Test_SetByIndex()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+            int index = 0;
+            int num = 2;
+            collection.SetBy(index);
+            var expcted = (index = num);
+            int expectedCount = 3;
+            Assert.That(collection.Count, Is.EqualTo(expectedCount));
+            Assert.AreEqual(collection.ToString(), "2, 1, 3");
+
+        }
 
 
 
